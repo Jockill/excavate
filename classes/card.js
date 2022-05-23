@@ -1,5 +1,7 @@
-class Card {
-	constructor(number, family) {
+class Card
+{
+	constructor(number, family)
+	{
 		this.number = number;
 		this.family = family;
 		if (family == SPADE || family == CLUB)

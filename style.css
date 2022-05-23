@@ -1,0 +1,25 @@
+body
+{
+	display: flex;
+	justify-content: center;
+}
+
+tr
+{
+	display: flex;
+	justify-content: center;
+}
+
+span
+{
+	display: inline-block;
+	width: 5em;
+	height: 5em;
+	border-color: black;
+	border-style: solid;
+}
+
+.void { border-style: none; }
+.start { background-color: green; }
+.avaliable { background-color: grey; }
+.empty { background-color: white; }

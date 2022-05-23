@@ -1,5 +1,7 @@
-class Deck {
-	constructor() {
+class Deck
+{
+	constructor()
+	{
 		this.generate();
 		this.cardsAmount = this.cards.length;
 	}
@@ -30,9 +32,9 @@ class Deck {
 		for (let i=0; i<this.cards.length; i++)
 		{
 			// choisir une carte
-			card = cards[randInt(0, this.cards.length)];
+			card = cards[rand_int(0, this.cards.length)];
 			// trouver une place où la mettre dans le deck
-			place = randInt(0, this.cards.length);
+			place = rand_int(0, this.cards.length);
 			while (newDeck[place] == undefined)
 				(place++)%this.cards.length;
 			newDeck[place] = card;
