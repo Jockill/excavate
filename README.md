@@ -8,7 +8,7 @@ A one-player game based on the Delve RPG rules
 	[ ] Cards events
  * Player management
  	[ ] Resources
- * [ ] World interactions
+ * [ ] World interactions (WIP)
 
 ### Mechanics
 [ ] Turn Structure
