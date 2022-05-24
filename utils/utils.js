@@ -18,20 +18,6 @@ function print_error(msg, obj)
 	console.groupEnd("Error");
 }
 
-function create_cell(className)
-{
-	let td = document.createElement("td");
-	let span = document.createElement("span");
-	span.classList.add(className);
-
-	// TODO: Attacher une instance de cell à la case
-	// var cell = new Cell(className);
-	// td.addEventListener("click", cell.activate_cell);
-	// td.cell = cell;
-
-	td.appendChild(span);
-	return td;
-}
 
 function start()
 {
@@ -41,12 +27,10 @@ function start()
 	firstRow.appendChild(create_cell("avaliable"));
 
 	let secondRow = document.createElement("tr");
-	secondRow.appendChild(create_cell("void"));
 	secondRow.appendChild(create_cell("avaliable"));
-	secondRow.appendChild(create_cell("void"));
 
 	grid.appendChild(firstRow);
 	grid.appendChild(secondRow);
 }
 
-start();
+// start();
