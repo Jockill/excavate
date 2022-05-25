@@ -13,7 +13,7 @@ function print_error(msg, obj)
 	if (obj != undefined)
 	{
 		console.log("Faultive variable:");
-		console.log(obj);
+		console.table(obj);
 	}
 	console.groupEnd("Error");
 }

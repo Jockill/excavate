@@ -15,21 +15,50 @@ class World
 		}
 
 		if (this.map[cell.y] == undefined)
-			this.add_row();
-		// TODO:
-		// trouver le nombre de cases
-		// creer le nombre manquant de cases
-		// to_grid_element()
-		this.map[cell.y][cell.x] = cell;
+			this.add_row(cell.y);
 
+		// Ajouter la case à la map
+		this.map[cell.y][cell.x] = cell;
+		this.map[cell.y][cell.x].to_grid_element();
 		this.cellsAmount++;
+
+		this.fill_row(cell.x);
 	}
 
-	add_row()
+	fill_row(y, startX)
+	{
+		// let rowSize = Object.keys(this.map[cell.y]).length;
+		if (startX < 0)
+		{
+			for (++startX; startX<=0; startX++)
+			{
+				if (this.map[y][startX] != undefined)
+					break;
+
+				// Creer une case vide
+				this.map[y][startX] = new Void(this.map[y][startX-1], LEFT);
+				this.map[y][startX].to_grid_element();
+			}
+		}
+		else
+		{
+			for (--startX; startX>=0; startX--)
+			{
+				if (this.map[y][startX] != undefined)
+					break;
+
+				// Creer une case vide
+				this.map[y][startX] = new Void(this.map[y][startX+1], RIGHT);
+				this.map[y][startX].to_grid_element();
+			}
+		}
+	}
+
+	add_row(nthRow)
 	{
 		let tr = document.createElement("tr");
 		grid.appendChild(tr);
-		this.map[this.map.length] = [];
+		this.map[nthRow] = [];
 	}
 
 	get_cell(x, y)
@@ -37,5 +66,10 @@ class World
 		if (this.map[y] != undefined)
 			return this.map[y][x];
 		return VOID;
+	}
+
+	spawn_cell(x, y, cell)
+	{
+		// TODO
 	}
 }

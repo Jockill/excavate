@@ -2,9 +2,11 @@ class Cell
 {
 	constructor(parent, parentPosition)
 	{
-		if (parent != YGGDRASIL && (parent == undefined || parentPosition == undefined || (TOP > parentPosition || parentPosition > RIGHT)))
+		if 	(parent != YGGDRASIL &&
+			(parent == undefined || parentPosition == undefined ||
+			(TOP > parentPosition || parentPosition > RIGHT)))
 		{
-			print_error("Impossible to create new cell", console.table({parent: parent, parentPosition: parentPosition}));
+			print_error("Impossible to create new cell", {parent: parent, parentPosition: parentPosition});
 			return -1;
 		}
 
@@ -14,7 +16,7 @@ class Cell
 		this.set_coordinates();
 		world.add_cell(this);
 		this.find_neibourgh();
-		this.to_grid_element();
+		// this.to_grid_element();
 	}
 
 	create_avaliable()
