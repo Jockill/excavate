@@ -33,4 +33,6 @@ function start()
 	grid.appendChild(secondRow);
 }
 
-// start();
+// cell est une cellule de type grid_element (= <td>)
+function get_html_cell_x(cell) { return cell.firstChild.cell.x; }
+function get_html_cell_y(cell) { return cell.firstChild.cell.y; }

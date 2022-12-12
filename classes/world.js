@@ -6,6 +6,7 @@ class World
 		this.map = [];
 	}
 
+	// Ajoute une case à this.map et crée une rangée dans la table html si nécessaire
 	add_cell(cell)
 	{
 		if (!(cell instanceof Cell))
@@ -54,13 +55,17 @@ class World
 		}
 	}
 
+	// Ajoute une rangée à this.map et crée une rangée dans la table html
 	add_row(nthRow)
 	{
 		let tr = document.createElement("tr");
+		// Forcément en dessous car on ne peut pas aller au dessus du spawn
+		// Forcément à append car on ne peut pas sauter de rangée
 		grid.appendChild(tr);
 		this.map[nthRow] = [];
 	}
 
+	// Renvoie la cellule aux coordonnées (x,y)
 	get_cell(x, y)
 	{
 		if (this.map[y] != undefined)
@@ -68,8 +73,21 @@ class World
 		return VOID;
 	}
 
+	// Crée la cellule (x,y) dans la table html
+	// FiX ME : Pb = Append a le meme comportement AppendChild
 	spawn_cell(x, y, cell)
 	{
-		// TODO
+		// Trouver le bon <tr> parent
+		let parentTr = grid.querySelector(`tr:nth-child(${ y + 1 })`)
+		
+		// Trouver le bon <td> parent
+		let firstX = 0
+		if (tr.firstChild != null) 
+			firstX = parseInt(get_html_cell_x(tr.firstChild));
+		let parentTd = parentTr.querySelector(`td:nth-child(${ Math.abs(firstX) + x + 1 })`)
+		if (parentTd == null)
+			parentTr.appendChild(cell)		
+		else
+			parentTd.append(cell)
 	}
 }

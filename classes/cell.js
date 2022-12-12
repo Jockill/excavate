@@ -16,7 +16,6 @@ class Cell
 		this.set_coordinates();
 		world.add_cell(this);
 		this.find_neibourgh();
-		// this.to_grid_element();
 	}
 
 	create_avaliable()
@@ -40,7 +39,7 @@ class Cell
 		this.right = world.get_cell(this.x+1, this.y);
 	}
 
-	// Start is on coordinates (0,0)
+	// Start est aux coordonnées (0,0)
 	set_coordinates()
 	{
 		if (this.parentPosition == TOP)
@@ -65,6 +64,7 @@ class Cell
 		}
 	}
 
+	// Crée et renvoie la cellule au format html
 	to_grid_element()
 	{
 		let td = document.createElement("td");
@@ -78,12 +78,12 @@ class Cell
 		return td;
 	}
 
-	// Chaine cette cellule à une autre
+	// Chaine la cellule à une autre
 	attach_cell(position, cell)
 	{
 		if (!(cell instanceof Cell))
 		{
-			print_error("Cell impossible to attach.", cell);
+			print_error("Cell impossible to attach : Not a cell.", cell);
 			return -1;
 		}
 
@@ -101,7 +101,7 @@ class Cell
 				this.right = cell;
 			break;
 			default:
-				print_error("Wrong position.", position);
+				print_error("Cell impossible to attach : Wrong position.", position);
 		}
 	}
 }
